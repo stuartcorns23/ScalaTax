@@ -65,48 +65,59 @@
         </div>
     </section>
 
-    <section class="section section--soft"><div class="container about-grid">
-        <div class="about-image">
-            <img src="<?php echo get_theme_mod('article-content-image'); ?>" alt="Calm, contemporary office interior" loading="lazy">
-        </div>
-        <div class="about-content">
-            <span class="eyebrow"><?php echo get_theme_mod('article-content-eyebrow'); ?></span>
-            <h2><?php echo get_theme_mod('article-content-title'); ?></h2>
-            <p><?php echo get_theme_mod('article-content-description'); ?></p>
-            <div class="values-grid">
-                <?php for ($number = 1; $number <= 4; $number++) :?>
-                <div class="value-item">
-                    <h3><?php echo get_theme_mod("article-content-point-$number-title");?></h3>
-                    <p><?php echo get_theme_mod("article-content-point-$number-description");?></p>
-                </div>
-                <?php endfor;?>
+    <?php get_template_part('template-parts/article-content'); ?>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow"><?php echo get_theme_mod("article-area-eyebrow");?></span>
+                <h2><?php echo get_theme_mod("article-area-title");?></h2>
+                <p><?php echo get_theme_mod("article-area-description");?></p>
             </div>
-            <p style="margin-top:28px"><a class="btn btn--primary" href="about.html">About Scala Tax</a></p>
+    
+            <div class="blog-grid">
+                <?php
+                $latest_posts = new WP_Query([
+                    'post_type'           => 'post',
+                    'posts_per_page'      => 3,
+                    'orderby'             => 'date',
+                    'order'               => 'DESC',
+                    'ignore_sticky_posts' => true,
+                ]);
+
+                if ($latest_posts->have_posts()) :
+                    while ($latest_posts->have_posts()) : $latest_posts->the_post();
+                        $categories = get_the_category();
+                        $read_time  = max(1, ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200));
+                ?>
+                <article class="blog-card">
+                    <?php if (has_post_thumbnail()) : ?>
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="blog-card-image">
+                            <?php the_post_thumbnail('large', ['loading' => 'lazy']); ?>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <?php if (!empty($categories)) : ?>
+                            <span><?php echo esc_html($categories[0]->name); ?></span>
+                            <?php endif; ?>
+                            <span><?php echo esc_html($read_time); ?> min read</span>
+                        </div>
+                        <h3><?php the_title(); ?></h3>
+                        <p><?php echo esc_html(get_the_excerpt()); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="text-link">Read article →</a>
+                    </div>
+                </article>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
         </div>
     </section>
-
-    <section class="section"><div class="container"><div class="section-heading"><span class="eyebrow">Latest Insights</span><h2>Tax news, updates and practical advice.</h2><p>Helpful information to support a better understanding of tax enquiries and disclosure processes.</p></div>
-    
-    <div class="blog-grid">
-        <article class="blog-card">
-            <a href="insights.html">
-                <div class="blog-card-image">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80" alt="Calculator and financial paperwork" loading="lazy">
-                </div>
-            </a>
-            <div class="blog-card-content">
-                <div class="blog-meta">
-                    <span>HMRC Guidance</span>
-                    <span>5 min read</span>
-                </div>
-                <h3>Understanding an HMRC Enquiry</h3>
-                <p>An introductory guide to what an enquiry may involve and how to prepare.</p>
-                <a href="insights.html" class="text-link">Read article →</a>
-            </div>
-        </article>
-        <article class="blog-card"><a href="insights.html"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80" alt="Documents on a desk" loading="lazy"></div></a><div class="blog-card-content"><div class="blog-meta"><span>Disclosures</span><span>4 min read</span></div><h3>Considering a Voluntary Disclosure</h3><p>Key questions to consider when exploring a disclosure and your options.</p><a href="insights.html" class="text-link">Read article →</a></div></article>
-        <article class="blog-card"><a href="insights.html"><div class="blog-card-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Business documents and laptop" loading="lazy"></div></a><div class="blog-card-content"><div class="blog-meta"><span>Tax Planning</span><span>3 min read</span></div><h3>Keeping Clear Tax Records</h3><p>Why organised records can help you respond to tax questions more confidently.</p><a href="insights.html" class="text-link">Read article →</a></div></article>
-    </div></div></section>
 </main>
 
 <section class="cta-section">
