@@ -66,28 +66,20 @@
     </section>
 
     <section class="section section--soft"><div class="container about-grid">
-        <div class="about-image"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85" alt="Calm, contemporary office interior" loading="lazy"></div>
+        <div class="about-image">
+            <img src="<?php echo get_theme_mod('article-content-image'); ?>" alt="Calm, contemporary office interior" loading="lazy">
+        </div>
         <div class="about-content">
-            <span class="eyebrow">A Structured Approach</span>
-            <h2>Experienced, trusted and on your side.</h2>
-            <p>Tax concerns can be personal and stressful. Scala Tax aims to make the process clearer through careful listening, straightforward explanations and support tailored to your circumstances.</p>
+            <span class="eyebrow"><?php echo get_theme_mod('article-content-eyebrow'); ?></span>
+            <h2><?php echo get_theme_mod('article-content-title'); ?></h2>
+            <p><?php echo get_theme_mod('article-content-description'); ?></p>
             <div class="values-grid">
+                <?php for ($number = 1; $number <= 4; $number++) :?>
                 <div class="value-item">
-                    <h3>Assess</h3>
-                    <p>Review HMRC Correspondence, Deadlines, Facts and Records.</p>
+                    <h3><?php echo get_theme_mod("article-content-point-$number-title");?></h3>
+                    <p><?php echo get_theme_mod("article-content-point-$number-description");?></p>
                 </div>
-                <div class="value-item">
-                    <h3>Strategise</h3>
-                    <p>Identify the technical. evidential and procedural arguments.</p>
-                </div>
-                <div class="value-item">
-                    <h3>Respond</h3>
-                    <p>Identify the technical. evidential and procedural arguments.</p>
-                </div>
-                <div class="value-item">
-                    <h3>Resolve</h3>
-                    <p>Identify the technical. evidential and procedural arguments.</p>
-                </div>
+                <?php ;?>
             </div>
             <p style="margin-top:28px"><a class="btn btn--primary" href="about.html">About Scala Tax</a></p>
         </div>

@@ -190,3 +190,30 @@ function scalatax_contact_url() {
     $contact_id = (int) get_option('scalatax_page_for_contact');
     return $contact_id ? get_permalink($contact_id) : home_url('/');
 }
+
+function disable_comments() {
+    $post_types = get_post_types();
+    foreach ($post_types as $post_type) {
+        if (post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+}
+add_action('admin_init', 'disable_comments');
+
+// Remove Comments link from the admin sidebar menu
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php'); //
+});
+
+// Remove Comments link from the top Admin Bar
+add_action('wp_before_admin_bar_render', function () {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+});
+
+// Remove Recent Comments widget from the Admin Dashboard dashboard
+add_action('wp_dashboard_setup', function () {
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); //
+});
