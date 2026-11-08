@@ -79,7 +79,7 @@
                     <h3><?php echo get_theme_mod("article-content-point-$number-title");?></h3>
                     <p><?php echo get_theme_mod("article-content-point-$number-description");?></p>
                 </div>
-                <?php ;?>
+                <?php endfor;?>
             </div>
             <p style="margin-top:28px"><a class="btn btn--primary" href="about.html">About Scala Tax</a></p>
         </div>
