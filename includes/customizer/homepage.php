@@ -192,97 +192,101 @@ for ($number = 1; $number <= 3; $number++) {
         "choices" => $service_choices,
     ]);
 }
+    // Article Content Section
 
-$wp_customize->add_section('article-content', array(
-    'panel' => 'home-page',
-    'priority' => 5,
-    'title' => __('Article Content', 'scalatax'),
-));
+    $wp_customize->add_section('article-content', array(
+        'panel' => 'home-page',
+        'priority' => 5,
+        'title' => __('Article Content', 'scalatax'),
+    ));
 
-$wp_customize->add_setting("article-content-eyebrow", [
-    "sanitize_callback" => "sanitize_text_field",
-]);
-$wp_customize->add_control("article-content-eyebrow-control", [
-    "label" => "Eyebrow",
-    "section" => "article-content",
-    "settings" => "article-content-eyebrow",
-    "type" => "text",
-]);
-
-$wp_customize->add_setting("article-content-title", [
-    "sanitize_callback" => "sanitize_text_field",
-]);
-$wp_customize->add_control("article-content-title-control", [
-    "label" => "Title",
-    "section" => "article-content",
-    "settings" => "article-content-title",
-    "type" => "text",
-]);
-
-$wp_customize->add_setting("article-content-description", [
-    "sanitize_callback" => "sanitize_textarea_field",
-]);
-$wp_customize->add_control("article-content-description-control", [
-    "label" => "Description",
-    "section" => "article-content",
-    "settings" => "article-content-description",
-    "type" => "textarea",
-]);
-
-$wp_customize->add_setting("article-content-image");
-$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "article-content-image-control", [
-    "label" => "Image",
-    "section" => "article-content",
-    "settings" => "article-content-image",
-]));
-
-$wp_customize->add_setting("article-content-link-text", [
-    "sanitize_callback" => "sanitize_text_field",
-]);
-$wp_customize->add_control("article-content-link-text-control", [
-    "label" => "Link Text",
-    "section" => "article-content",
-    "settings" => "article-content-link-text",
-    "type" => "text",
-]);
-
-$wp_customize->add_setting("article-content-link-url", [
-    "sanitize_callback" => "esc_url_raw",
-]);
-$wp_customize->add_control("article-content-link-url-control", [
-    "label" => "Link URL",
-    "section" => "article-content",
-    "settings" => "article-content-link-url",
-    "type" => "url",
-]);
-
-for ($number = 1; $number <= 4; $number++) {
-    $wp_customize->add_setting("article-content-point-$number-separator");
-    $wp_customize->add_control(new Separator_Custom_Control($wp_customize, "article-content-point-$number-separator-control", [
-        "section" => "article-content",
-        "settings" => "article-content-point-$number-separator",
-    ]));
-
-    $wp_customize->add_setting("article-content-point-$number-title", [
+    $wp_customize->add_setting("article-content-eyebrow", [
         "sanitize_callback" => "sanitize_text_field",
     ]);
-    $wp_customize->add_control("article-content-point-$number-title-control", [
-        "label" => "Point $number Title",
+    $wp_customize->add_control("article-content-eyebrow-control", [
+        "label" => "Eyebrow",
         "section" => "article-content",
-        "settings" => "article-content-point-$number-title",
+        "settings" => "article-content-eyebrow",
         "type" => "text",
     ]);
 
-    $wp_customize->add_setting("article-content-point-$number-description", [
+    $wp_customize->add_setting("article-content-title", [
+        "sanitize_callback" => "sanitize_text_field",
+    ]);
+    $wp_customize->add_control("article-content-title-control", [
+        "label" => "Title",
+        "section" => "article-content",
+        "settings" => "article-content-title",
+        "type" => "text",
+    ]);
+
+    $wp_customize->add_setting("article-content-description", [
         "sanitize_callback" => "sanitize_textarea_field",
     ]);
-    $wp_customize->add_control("article-content-point-$number-description-control", [
-        "label" => "Point $number Description",
+    $wp_customize->add_control("article-content-description-control", [
+        "label" => "Description",
         "section" => "article-content",
-        "settings" => "article-content-point-$number-description",
+        "settings" => "article-content-description",
         "type" => "textarea",
     ]);
-}
+
+    $wp_customize->add_setting("article-content-image");
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "article-content-image-control", [
+        "label" => "Image",
+        "section" => "article-content",
+        "settings" => "article-content-image",
+    ]));
+
+    $wp_customize->add_setting("article-content-link-text", [
+        "sanitize_callback" => "sanitize_text_field",
+    ]);
+    $wp_customize->add_control("article-content-link-text-control", [
+        "label" => "Link Text",
+        "section" => "article-content",
+        "settings" => "article-content-link-text",
+        "type" => "text",
+    ]);
+
+    $wp_customize->add_setting("article-content-link-url", [
+        "sanitize_callback" => "esc_url_raw",
+    ]);
+    $wp_customize->add_control("article-content-link-url-control", [
+        "label" => "Link URL",
+        "section" => "article-content",
+        "settings" => "article-content-link-url",
+        "type" => "url",
+    ]);
+
+    for ($number = 1; $number <= 4; $number++) {
+        $wp_customize->add_setting("article-content-point-$number-separator");
+        $wp_customize->add_control(new Separator_Custom_Control($wp_customize, "article-content-point-$number-separator-control", [
+            "section" => "article-content",
+            "settings" => "article-content-point-$number-separator",
+        ]));
+
+        $wp_customize->add_setting("article-content-point-$number-title", [
+            "sanitize_callback" => "sanitize_text_field",
+        ]);
+        $wp_customize->add_control("article-content-point-$number-title-control", [
+            "label" => "Point $number Title",
+            "section" => "article-content",
+            "settings" => "article-content-point-$number-title",
+            "type" => "text",
+        ]);
+
+        $wp_customize->add_setting("article-content-point-$number-description", [
+            "sanitize_callback" => "sanitize_textarea_field",
+        ]);
+        $wp_customize->add_control("article-content-point-$number-description-control", [
+            "label" => "Point $number Description",
+            "section" => "article-content",
+            "settings" => "article-content-point-$number-description",
+            "type" => "textarea",
+        ]);
+    }
+    // End of Article Content
+
+    // Article Area Section
 
 $wp_customize->add_section('article-area', array(
     'panel' => 'home-page',

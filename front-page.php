@@ -39,85 +39,27 @@
 
     <section class="section"><div class="container">
         <div class="section-heading">
-            <span class="eyebrow">How We Can Help</span>
-            <h2>Clear, practical help when HMRC challenges your tax position.</h2>
-            <p>When a tax issue feels difficult to navigate, specialist support can help you understand your position and consider the options available.</p></div>
-            <div class="services-grid">
-                <article class="service-card">
-                    <div class="service-icon">↗</div>
-                    <h3>HMRC Disputes</h3>
-                    <p>Guidance and representation for tax enquiries, investigations and compliance matters.</p>
-                    <a class="text-link" href="services.html#hmrc-disputes">Explore service →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-icon">✓</div>
-                    <h3>Voluntary Disclosures</h3>
-                    <p>Practical support for people who need to disclose tax matters to HMRC.</p>
-                    <a class="text-link" href="services.html#disclosures">Explore service →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-icon">◇</div>
-                    <h3>Tax Advice</h3>
-                    <p>Understand your situation, responsibilities and possible next steps.</p>
-                    <a class="text-link" href="services.html#tax-planning">Explore service →</a>
-                </article>
-            </div>
+            <span class="eyebrow"><?php echo get_theme_mod("service-area-eyebrow");?></span>
+            <h2><?php echo get_theme_mod("service-area-title");?></h2>
+            <p><?php echo get_theme_mod("service-area-description");?></p>
+        </div>
+        <div class="services-grid">
+            <?php for ($number = 1; $number <= 3; $number++) :
+                $service = get_post(get_theme_mod("service-area-service-{$number}"));    
+            ?>
+            <article class="service-card">
+                <div class="service-icon">✓</div>
+                <h3><?php echo $service->post_title; ?></h3>
+                <p><?php echo $service->post_content; ?></p>
+                <a class="text-link" href="<?php echo get_permalink($service->ID); ?>">Explore service →</a>
+            </article>
+            <?php endfor;?>
         </div>
     </section>
 
     <?php get_template_part('template-parts/article-content'); ?>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow"><?php echo get_theme_mod("article-area-eyebrow");?></span>
-                <h2><?php echo get_theme_mod("article-area-title");?></h2>
-                <p><?php echo get_theme_mod("article-area-description");?></p>
-            </div>
-    
-            <div class="blog-grid">
-                <?php
-                $latest_posts = new WP_Query([
-                    'post_type'           => 'post',
-                    'posts_per_page'      => 3,
-                    'orderby'             => 'date',
-                    'order'               => 'DESC',
-                    'ignore_sticky_posts' => true,
-                ]);
-
-                if ($latest_posts->have_posts()) :
-                    while ($latest_posts->have_posts()) : $latest_posts->the_post();
-                        $categories = get_the_category();
-                        $read_time  = max(1, ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200));
-                ?>
-                <article class="blog-card">
-                    <?php if (has_post_thumbnail()) : ?>
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="blog-card-image">
-                            <?php the_post_thumbnail('large', ['loading' => 'lazy']); ?>
-                        </div>
-                    </a>
-                    <?php endif; ?>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <?php if (!empty($categories)) : ?>
-                            <span><?php echo esc_html($categories[0]->name); ?></span>
-                            <?php endif; ?>
-                            <span><?php echo esc_html($read_time); ?> min read</span>
-                        </div>
-                        <h3><?php the_title(); ?></h3>
-                        <p><?php echo esc_html(get_the_excerpt()); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="text-link">Read article →</a>
-                    </div>
-                </article>
-                <?php
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part('template-parts/article-area'); ?>
 </main>
 
 <section class="cta-section">

@@ -116,7 +116,7 @@ function register_post_type__event(){
         ),
         'menu_icon' => 'dashicons-calculator',
         'show_in_rest' => true,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
     ));
 }
 
