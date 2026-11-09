@@ -9,7 +9,7 @@
             <p><?php echo get_the_excerpt(); ?></p>
         </div>
         <div class="page-hero-image">
-            <img src="<?php echo get_featured_image_url(); ?>" alt="<?php echo get_the_title(); ?>">
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
         </div>
     </div>
 </section>
