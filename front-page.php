@@ -62,11 +62,6 @@
     <?php get_template_part('template-parts/article-area'); ?>
 </main>
 
-<section class="cta-section">
-  <div class="container cta-inner">
-    <div><h2>Need clarity on a tax matter?</h2><p>Speak to Scala Tax about your situation and the support available to you.</p></div>
-    <a class="btn btn--primary" href="<?php echo esc_url(scalatax_contact_url());?>">Make an Enquiry →</a>
-  </div>
-</section>
+<?php get_template_part('template-parts/footer-hero'); ?>
 
 <?php function_exists('get_footer') ? get_footer() : ''; ?>
