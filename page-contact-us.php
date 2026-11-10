@@ -9,7 +9,7 @@
                 <p><?php echo esc_html(get_theme_mod('contact-description', 'If you have a tax enquiry or would like to discuss your circumstances, contact Scala Tax to arrange an initial conversation.')); ?></p>
             </div>
             <div class="page-hero-image">
-                <img src="<?php echo esc_url(get_theme_mod('contact-hero-image')); ?>" alt="Contact Scala Tax" />
+                <img src="<?php echo esc_url(get_theme_mod('contact-featured-image')); ?>" alt="Contact Scala Tax" />
             </div>
         </div>
     </section>
