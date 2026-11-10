@@ -217,3 +217,130 @@ add_action('wp_before_admin_bar_render', function () {
 add_action('wp_dashboard_setup', function () {
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); //
 });
+
+function get_breadcrumb()
+{
+    $breadcrumbs = '';
+
+    $breadcrumbs = '<div class="breadcrumbs"><ul>';
+    $breadcrumbs .= '<li><a class="" href="' . home_url() . '" rel="nofollow">Home</a></li>';
+
+    if(is_category() || is_single()){
+        $categories = get_the_category();
+        if(!empty($categories)){
+            $breadcrumbs .= '<li><a class="" href="' . get_category_link($categories[0]->term_id) . '" rel="nofollow">' . esc_html( $categories[0]->name ) . '</a></li>';
+        }
+        if(is_single()){
+            $breadcrumbs .= '<li>' . get_the_title() . '</li>';
+        }
+    } else if(is_page()){
+        $breadcrumbs .= '<li>' . get_the_title() . '</li>';
+    } else if(is_search()){
+        $breadcrumbs .= '<li>"<em>' . get_search_query() . '</em>"</li>';
+    }
+
+    $breadcrumbs .= '</ul></div>';
+
+    echo $breadcrumbs;
+
+	// echo '<a class="text-white" href="' . home_url() . '" rel="nofollow">Home</a>';
+	
+    // if(is_category() || is_single())
+	// {
+	// 	echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+	// 	the_category(' &bull; ');
+	// 	if(is_single())
+	// 	{
+	// 		echo " &nbsp;&nbsp;&#187;&nbsp;&nbsp; ";
+	// 		the_title();
+	// 	}
+	// } else if(is_page())
+	// {
+	// 	echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+	// 	echo the_title();
+	// } else if(is_search())
+	// {
+	// 	echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;Search Results for... ";
+	// 	echo '"<em>';
+	// 	echo the_search_query();
+	// 	echo '</em>"';
+	// }
+
+}
+
+function breadcrumbs() {
+    $breadcrumbs = array();
+
+    // Home
+    $breadcrumbs[] = (object) array(
+        'name' => 'Home',
+        'url'  => home_url()
+    );
+
+    // Pages
+    if (is_page()) {
+        global $post;
+
+        $parents = array_reverse(get_post_ancestors($post->ID));
+
+        // Add parent pages
+        foreach ($parents as $parent_id) {
+            $breadcrumbs[] = (object) array(
+                'name' => get_the_title($parent_id),
+                'url'  => get_permalink($parent_id)
+            );
+        }
+
+        // Current page
+        $breadcrumbs[] = (object) array(
+            'name' => get_the_title(),
+            'url'  => null
+        );
+    }
+
+    // Single blog post (custom post types fall through to the is_singular() branch below)
+    elseif (is_singular('post')) {
+        $category = get_the_category();
+        if (!empty($category)) {
+            $cat = $category[0];
+
+            $breadcrumbs[] = (object) array(
+                'name' => $cat->name,
+                'url'  => get_category_link($cat->term_id)
+            );
+        }
+
+        $breadcrumbs[] = (object) array(
+            'name' => get_the_title(),
+            'url'  => null
+        );
+    }
+
+    // Category archive
+    elseif (is_category()) {
+        $breadcrumbs[] = (object) array(
+            'name' => single_cat_title('', false),
+            'url'  => null
+        );
+    }
+
+    // Custom post type
+    elseif (is_singular()) {
+        global $post;
+        $post_type = get_post_type_object(get_post_type());
+
+        if ($post_type && $post_type->has_archive) {
+            $breadcrumbs[] = (object) array(
+                'name' => $post_type->labels->name,
+                'url'  => get_post_type_archive_link($post_type->name)
+            );
+        }
+
+        $breadcrumbs[] = (object) array(
+            'name' => get_the_title(),
+            'url'  => null
+        );
+    }
+
+    return $breadcrumbs;
+}
