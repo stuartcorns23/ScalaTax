@@ -344,3 +344,17 @@ function breadcrumbs() {
 
     return $breadcrumbs;
 }
+
+// Articles per page on the blog listings, set under Customizer → Blog → Blog Listing
+add_action('pre_get_posts', function ($query) {
+    if (is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    if ($query->is_home() || $query->is_category() || $query->is_tag() || $query->is_author() || $query->is_date() || $query->is_search()) {
+        $per_page = absint(get_theme_mod('blog-posts-per-page', get_option('posts_per_page')));
+        if ($per_page > 0) {
+            $query->set('posts_per_page', $per_page);
+        }
+    }
+});

@@ -22,9 +22,16 @@ $wp_customize->add_panel('services', array(
 
 require_once get_template_directory() . '/includes/customizer/services.php';
 
+$wp_customize->add_panel('blog', array(
+    'title' => 'Blog',
+    'priority' => 4,
+));
+
+require_once get_template_directory() . '/includes/customizer/blog.php';
+
 $wp_customize->add_panel('contact', array(
     'title' => 'Contact',
-    'priority' => 4,
+    'priority' => 5,
 ));
 
 require_once get_template_directory() . '/includes/customizer/contact.php';

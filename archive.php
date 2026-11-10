@@ -15,7 +15,18 @@ if (is_category() || is_tag()) {
 ?>
 
 <main>
-<section class="page-hero"><div class="container hero-grid"><div class="hero-copy"><span class="eyebrow">Scala Tax Insights</span><h1>Knowledge to help you move forward.</h1><p>Explore articles, updates and practical guidance on HMRC disputes, voluntary disclosures and tax matters. Our aim is to make complex topics easier to understand, so you can approach your next steps with greater clarity.</p></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85" alt="Notebook and paperwork arranged on a professional desk"></div></div></section>
+<section class="page-hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><?php echo esc_html(get_theme_mod('blog-eyebrow', 'Scala Tax Insights')); ?></span>
+      <h1><?php echo esc_html(get_theme_mod('blog-title', 'Knowledge to help you move forward.')); ?></h1>
+      <p><?php echo esc_html(get_theme_mod('blog-description', 'Explore articles, updates and practical guidance on HMRC disputes, voluntary disclosures and tax matters. Our aim is to make complex topics easier to understand, so you can approach your next steps with greater clarity.')); ?></p>
+    </div>
+    <div class="hero-image">
+      <img src="<?php echo esc_url(get_theme_mod('blog-featured-image', 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85')); ?>" alt="Notebook and paperwork arranged on a professional desk">
+    </div>
+  </div>
+</section>
 <section class="articles-section"><div class="container">
   <div class="section-heading"><div><span class="eyebrow">From the Blog</span><h2><?php echo esc_html($listing_heading);?></h2><p>Browse the latest insights from Scala Tax.</p></div></div>
   <div class="article-tools">
