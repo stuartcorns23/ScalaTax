@@ -15,6 +15,13 @@ $wp_customize->add_panel('home-page', array(
 
 require_once get_template_directory() . '/includes/customizer/homepage.php';
 
+$wp_customize->add_panel('services', array(
+    'title' => 'Services',
+    'priority' => 3,
+));
+
+require_once get_template_directory() . '/includes/customizer/services.php';
+
 // Move WordPress's own Homepage Settings section into the Home Page panel.
 // Core registers that section after this file runs, so wait until it exists.
 add_action('customize_register', function ($wp_customize) {
