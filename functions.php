@@ -4,7 +4,7 @@ function scalatax_load_assets() {
     $js_path = get_theme_file_path('/build/index.js');
     $css_path = get_theme_file_path('/build/index.css');
 
-    wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), file_exists($js_path) ? filemtime($js_path) : '1.0', true);
+    wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array(), file_exists($js_path) ? filemtime($js_path) : '1.0', true);
     wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'), array(), file_exists($css_path) ? filemtime($css_path) : '1.0');
     wp_enqueue_style('MaterialIcons', "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=call,home,mail,search");
 }

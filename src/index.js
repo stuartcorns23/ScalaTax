@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const setOpen = (open) => {
     nav.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     toggle.textContent = open ? '✕' : '☰';
