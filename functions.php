@@ -358,3 +358,10 @@ add_action('pre_get_posts', function ($query) {
         }
     }
 });
+
+// Featured image URL, falling back to the theme's default image when none is set
+function scalatax_featured_image_url($post = null, $size = 'full') {
+    $url = get_the_post_thumbnail_url($post, $size);
+
+    return $url ? $url : get_theme_file_uri('/images/scala-tax-home-1.avif');
+}

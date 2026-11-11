@@ -8,7 +8,7 @@
                 <h1><?php the_title();?></h1>
             </div>
             <div class="page-hero-image">
-                <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                <img src="<?php echo esc_url(scalatax_featured_image_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </div>
         </div>
     </section>
