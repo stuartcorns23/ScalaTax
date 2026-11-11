@@ -28,7 +28,6 @@ if (is_category() || is_tag()) {
   </div>
 </section>
 <section class="articles-section"><div class="container">
-  <div class="section-heading"><div><span class="eyebrow">From the Blog</span><h2><?php echo esc_html($listing_heading);?></h2><p>Browse the latest insights from Scala Tax.</p></div></div>
   <div class="article-tools">
     <nav class="category-list" aria-label="Article categories">
       <a class="category-button" href="<?php echo esc_url($blog_url);?>"<?php echo is_home() ? ' aria-current="page"' : '';?>>All articles</a>
