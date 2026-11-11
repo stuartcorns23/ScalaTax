@@ -15,10 +15,18 @@
 </section>
 
 <section class="section">
-    <div class="container">
-        <div class="post-content">
-            <?php the_content(); ?>
+    <div class="container service-layout">
+        <div class="service-main">
+            <?php get_template_part('template-parts/breadcrumbs'); ?>
+
+            <div class="post-content">
+                <?php the_content(); ?>
+            </div>
         </div>
+
+        <?php get_template_part('template-parts/sidebar-recent-posts', null, array(
+            'exclude' => array(get_the_ID()),
+        )); ?>
     </div>
 </section>
 </main>
