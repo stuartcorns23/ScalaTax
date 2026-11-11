@@ -5,6 +5,10 @@
                 <img width="auto" src="<?php echo get_theme_mod("dark-logo") ?>" />
             </a>
             <p>Specialist support for HMRC disputes and voluntary disclosures, delivered with care and discretion.</p>
+            <div class="footer-accreditations">
+                <img src="<?php echo esc_url(get_theme_file_uri('/images/cta-light.svg')); ?>" alt="Chartered Tax Adviser (CTA)" height="60">
+                <img src="<?php echo esc_url(get_theme_file_uri('/images/att-light.svg')); ?>" alt="Association of Taxation Technicians (ATT)" height="60">
+            </div>
         </div>
         <div class="footer-column">
             <h3>Explore</h3>

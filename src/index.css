@@ -1553,3 +1553,20 @@ p {
 .breadcrumbs [aria-current="page"] {
   color: var(--muted);
 }
+
+/* =========================================
+   FOOTER ACCREDITATIONS
+========================================= */
+
+.footer-accreditations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.footer-accreditations img {
+  width: auto;
+  height: 60px;
+}
