@@ -25,7 +25,7 @@
                     <div class="contact-item-icon" aria-hidden="true">☎</div>
                     <div>
                         <h3>Telephone</h3>
-                        <p><a href="tel:<?php esc_html(do_shortcode('[business_phone]')); ?>"><?php echo esc_html(do_shortcode('[business_phone]')); ?></a></p>
+                        <p><a href="tel:"><?php echo esc_html(do_shortcode('[business_phone]')); ?></a></p>
                     </div>
                 </div>
                 <div class="contact-item">
