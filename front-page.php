@@ -30,7 +30,7 @@
             </div>
             <div>
                 <h3><?php echo get_theme_mod("icon-group-{$number}-title");?></h3>
-                <p>Support through complex tax enquiries.</p>
+                <p><?php echo get_theme_mod("icon-group-{$number}-description");?></p>
             </div>
         </div>
         <?php endfor;?>

@@ -480,7 +480,7 @@ p {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 5;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: 40px;
 }
@@ -489,7 +489,6 @@ p {
   min-height: 520px;
   overflow: hidden;
   border-radius: 16px;
-  grid-column: 2;
 }
 
 .about-image img {
@@ -499,9 +498,6 @@ p {
   object-fit: cover;
 }
 
-.about-content {
-  grid-column: 3;
-}
 
 .about-content h2 {
   margin-top: 0;

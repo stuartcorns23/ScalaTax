@@ -1,7 +1,7 @@
 <section class="section section--soft">
     <div class="container about-grid">
         <div class="about-image">
-            <img src="<?php echo get_theme_mod('article-content-image'); ?>" alt="Calm, contemporary office interior" loading="lazy">
+            <img src="<?php echo get_theme_mod('article-content-image'); ?>" alt="<?php echo get_theme_mod('article-content-image-alt'); ?>" loading="lazy">
         </div>
         <div class="about-content">
             <span class="eyebrow"><?php echo get_theme_mod('article-content-eyebrow'); ?></span>
