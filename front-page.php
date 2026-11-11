@@ -50,7 +50,7 @@
             <article class="service-card">
                 <div class="service-icon">✓</div>
                 <h3><?php echo $service->post_title; ?></h3>
-                <p><?php echo $service->post_content; ?></p>
+                <p><?php echo $service->post_excerpt; ?></p>
                 <a class="text-link" href="<?php echo get_permalink($service->ID); ?>">Explore service →</a>
             </article>
             <?php endfor;?>
