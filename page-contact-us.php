@@ -32,7 +32,7 @@
                     <div class="contact-item-icon" aria-hidden="true">✉</div>
                     <div>
                         <h3>Email</h3>
-                        <p><?php echo get_theme_mod('business-email'); ?></p>
+                        <p><?php echo get_theme_mod('[business-email]'); ?></p>
                     </div>
                 </div>
                 <div class="contact-item">
