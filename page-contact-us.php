@@ -25,14 +25,14 @@
                     <div class="contact-item-icon" aria-hidden="true">☎</div>
                     <div>
                         <h3>Telephone</h3>
-                        <p><?php echo esc_html(do_shortcode('[business_phone]')); ?></p>
+                        <p><?php echo do_shortcode('[business_phone]'); ?></p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-item-icon" aria-hidden="true">✉</div>
                     <div>
                         <h3>Email</h3>
-                        <p><?php echo esc_html(get_theme_mod('business-email')); ?></p>
+                        <p><?php echo get_theme_mod('business-email'); ?></p>
                     </div>
                 </div>
                 <div class="contact-item">
