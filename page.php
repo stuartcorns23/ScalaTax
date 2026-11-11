@@ -12,9 +12,17 @@
             </div>
         </div>
     </section>
-    
-    <section class="container">
-        <?php the_content();?>
+
+    <section class="section">
+        <div class="container service-layout">
+            <div class="service-main">
+                <?php get_template_part('template-parts/breadcrumbs'); ?>
+
+                <?php the_content();?>
+            </div>
+
+            <?php get_template_part('template-parts/sidebar-services'); ?>
+        </div>
     </section>
 </main>
 
